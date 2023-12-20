@@ -6,51 +6,52 @@ const todoList = require("../todo");
 const {
   all,
   add,
-  markAsComplete,
   overdue,
   dueToday,
   dueLater,
   toDisplayableList,
+  markAsComplete,
+
 } = todoList();
 
-// Test Suite collection of all tests
+// Test Suite for testing unit testing the tests
 describe("Todo List Test Suite", () => {
   beforeAll(() => {
     //today
     let today = new Date().toISOString().split("T")[0];
 
     // today plus 10 days
-    let today_plus10days = new Date();
-    today_plus10days.setDate(today_plus10days.getDate() + 10);
-    today_plus10days = new Date(today_plus10days);
-    today_plus10days = today_plus10days.toISOString().split("T")[0];
+    let today_10days = new Date();
+    today_10days.setDate(today_10days.getDate() + 10);
+    today_10days = new Date(today_10days);
+    today_10days = today_10days.toISOString().split("T")[0];
 
     //today minus 10 days
-    let today_minus10days = new Date();
-    today_minus10days.setDate(today_minus10days.getDate() - 10);
-    today_minus10days = new Date(today_minus10days);
-    today_minus10days = today_minus10days.toISOString().split("T")[0];
+    let today_sub10days = new Date();
+    today_sub10days.setDate(today_sub10days.getDate() - 10);
+    today_sub10days = new Date(today_sub10days);
+    today_sub10days = today_sub10days.toISOString().split("T")[0];
 
     // now we add elements into all array
     add({
-      title: "DSA prep",
+      title: "nenu dsa chadvali",
       completed: false,
-      dueDate: today_plus10days,
+      dueDate: today_10days,
     });
 
     add({
-      title: "Complete Solidity",
+      title: "  Solidity",
       completed: false,
-      dueDate: today_minus10days,
+      dueDate: today_sub10days,
     });
 
     add({
-      title: " Make Personal Portfolio ",
+      title: " helo elo ",
       completed: true,
       dueDate: today,
     });
     add({
-      title: "Test todo",
+      title: "Test adhey pani lo todo",
       completed: false,
       dueDate: today,
     });
@@ -62,7 +63,7 @@ describe("Todo List Test Suite", () => {
 
     // here we add element into all array
     add({
-      title: "Test todo",
+      title: "Test  xhxhxtodo",
       completed: true,
       dueDate: new Date().toISOString().split("T")[0],
     });
@@ -79,74 +80,74 @@ describe("Todo List Test Suite", () => {
 
   //in this we test retrieval of overdue items
   test("checks retrieval of overdue items.", () => {
-    let count_overdue = overdue().length;
+    let countOverdue = overdue().length;
 
     // today minus 5 days to check overdue
-    let todayminus_5Days = new Date();
-    todayminus_5Days.setDate(todayminus_5Days.getDate() - 5);
-    todayminus_5Days = todayminus_5Days.toISOString().split("T")[0];
+    let todaySub5Day = new Date();
+    todaySub5Day.setDate(todaySub5Day.getDate() - 5);
+    todaySub5Day = todaySub5Day.toISOString().split("T")[0];
 
     //adding elements into all array
     add({
-      title: "Watch Code with Harry Python Playslit",
+      title: "chadhuvi kondi first",
       completed: true,
-      dueDate: todayminus_5Days,
+      dueDate: todaySub5Day,
     });
 
     add({
-      title: "Watch Harry Potter",
+      title: "Watch Marvel Avengers",
       completed: true,
-      dueDate: todayminus_5Days,
+      dueDate: todaySub5Day,
     });
 
-    expect(overdue().length).toBe(count_overdue + 2);
+    expect(overdue().length).toBe(countOverdue + 2);
   });
 
   //testing of retrieval of due later items.
   test("checks retrieval of due later items.", () => {
-    let count_dueLater = dueLater().length;
+    let CDlater = dueLater().length;
 
     // today plus 5 days to check due later
-    let todayplus_5Days = new Date();
-    todayplus_5Days.setDate(todayplus_5Days.getDate() + 5);
-    todayplus_5Days = todayplus_5Days.toISOString().split("T")[0];
+    let TodayAdd5Days = new Date();
+    TodayAdd5Days.setDate(TodayAdd5Days.getDate() + 5);
+    TodayAdd5Days = TodayAdd5Days.toISOString().split("T")[0];
 
     //adding elements into all array
     add({
-      title: "Clone website of Spotify ",
+      title: "Drink water ",
       completed: true,
-      dueDate: todayplus_5Days,
+      dueDate: TodayAdd5Days,
     });
 
     add({
-      title: " Watch Ind vs Eng Match  ",
+      title: " Inka alo  ",
       completed: false,
-      dueDate: todayplus_5Days,
+      dueDate: TodayAdd5Days,
     });
 
-    expect(dueLater().length).toBe(count_dueLater + 2);
+    expect(dueLater().length).toBe(CDlater + 2);
   });
 
   //testing of retrieval of due today items.
   test("checks retrieval of due today items.", () => {
-    let count_dueToday = dueToday().length;
+    let Cdtoday = dueToday().length;
 
     //today date in required format
     let date_today = new Date().toISOString().split("T")[0];
 
     //adding elements into all array
     add({
-      title: "Eat Biryani",
+      title: "Eat Maggi",
       completed: false,
       dueDate: date_today,
     });
 
     add({
-      title: "Complete Assignment",
+      title: "should think",
       completed: true,
       dueDate: date_today,
     });
 
-    expect(dueToday().length).toBe(count_dueToday + 2);
+    expect(dueToday().length).toBe(Cdtoday + 2);
   });
 });

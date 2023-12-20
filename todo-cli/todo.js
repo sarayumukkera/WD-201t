@@ -9,76 +9,76 @@ const todoList = () => {
   }
 
   const overdue = () => {
-    // Write the date check condition here and return the array
-    // of overdue items accordingly.
-    let overdueitems = [];
-    let todaydate = new Date();
-    todaydate = todaydate.toISOString().split("T")[0];
+ //this returns overDUe by iterating over the items
+    let odList = [];
+    let TodayDat = new Date();
+    TodayDat = TodayDat.toISOString().split("T")[0];
     all.forEach((element) => {
-      if (element.dueDate < todaydate) {
-        overdueitems.push(element);
+      if (element.dueDate < TodayDat) {
+        odList.push(element);
       }
     });
-    return overdueitems;
+    return odList;
   };
 
   const dueToday = () => {
-    let dueToday = [];
+
+    // this returns the dueToday list by traversin
+    let dueTodayArray = [];
     all.map((element) => {
-      let todaydate = new Date();
-      todaydate = todaydate.toISOString().split("T")[0];
-      if (todaydate === element.dueDate) {
-        dueToday.push(element);
+      let tDate = new Date();
+      tDate = tDate.toISOString().split("T")[0];
+      if (tDate === element.dueDate) {
+        dueTodayArray.push(element);
       }
     });
-    return dueToday;
+    return dueTodayArray;
   };
 
   const dueLater = () => {
-    // Write the date check condition here and return the array
-    // of todo items that are due later accordingly.
-    let duelateritems = [];
-    let todaydate = new Date();
-    todaydate = todaydate.toISOString().split("T")[0];
+   // this check the condition and returns by traversing and adding to array
+    let duelateritemsArray = [];
+    let todaydateTemp = new Date();
+    todaydateTemp = todaydateTemp.toISOString().split("T")[0];
     all.forEach((element) => {
-      if (element.dueDate > todaydate) {
-        duelateritems.push(element);
+      if (element.dueDate > todaydateTemp) {
+        duelateritemsArray.push(element);
       }
     });
-    return duelateritems;
+    return duelateritemsArray;
   };
 
   const toDisplayableList = (list) => {
-    // Format the To-Do list here, and return the output string
-    // as per the format given above.
 
+    // returns the list in a readble format i.e display
+ 
     if (list.lenght === 0) {
       return;
     }
 
-    let StrinArray = [];
+    let StrinArrayList = [];
     list.map((element) => {
-      let tempString = "";
+      let tString = "";
       if (element.completed) {
-        let todaydate = new Date();
-        todaydate = todaydate.toISOString().split("T")[0];
-        if (todaydate === element.dueDate) {
-          tempString = `[x] ${element.title} `;
+        let Tdate = new Date();
+        Tdate = Tdate.toISOString().split("T")[0];
+        if (Tdate === element.dueDate) {
+          tString = `[x] ${element.title} `;
         } else {
-          tempString = `[x] ${element.title} ${element.dueDate}`;
+          tString = `[x] ${element.title} ${element.dueDate}`;
         }
       } else {
-        let todaydate = new Date();
-        todaydate = todaydate.toISOString().split("T")[0];
-        if (todaydate === element.dueDate) {
-          tempString = `[ ] ${element.title} `;
+        let todaydateTemp = new Date();
+        todaydateTemp = todaydateTemp.toISOString().split("T")[0];
+        if (todaydateTemp === element.dueDate) {
+          tString = `[ ] ${element.title} `;
         } else {
-          tempString = `[ ] ${element.title} ${element.dueDate}`;
+          tString = `[ ] ${element.title} ${element.dueDate}`;
         }
       }
-      StrinArray.push(tempString);
+      StrinArrayList.push(tString);
     });
-    return StrinArray.join("\n");
+    return StrinArrayList.join("\n");
   };
 
   return {

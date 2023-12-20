@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+    <style>
+      body {
+        background-color: #1b1b32;
+        color: white;
+        text-align: center;
+      }
+      .inputs {
+        display: block;
+        justify-content: center;
+      }
+
+      label {
+        display: block;
+        margin: 1rem;
+        padding: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="registrationForm" action="">
+      <div class="inputs">
+        <h1>Registration form</h1>
+        <label
+          >Name
+          <input type="text" placeholder="Enter Full Name" id="name" required />
+        </label>
+        <label
+          >Email
+          <input type="email" placeholder="Enter email" id="email" required />
+        </label>
+        <label
+          >Password
+          <input
+            type="password"
+            placeholder="Enter password"
+            id="password"
+            required
+          />
+        </label>
+        <label>Date of Birth<input type="date" required id="dob" /> </label>
+        <label
+          ><input type="checkbox" id="acceptedterms" required /> Accept the
+          terms and conditions</label
+        >
+      </div>
+      <button type="submit" id="submit">Submit</button>
+    </form>
+
+    <div id="user-table"></div>
+
+    <script src="index.js"></script>
+  </body>
+</html>

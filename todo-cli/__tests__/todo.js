@@ -1,10 +1,10 @@
-const todol = require("../todo");
+const todoList = require("../todo");
 
-describe("Todol Test Suite", () => {
+describe("TodoList Test Suite", () => {
   let todo;
 
   beforeEach(() => {
-    todo = todol();
+    todo = todoList();
   });
 
   test("We Should create a new todo", () => {
